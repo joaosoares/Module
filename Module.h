@@ -1,25 +1,21 @@
-/*
-	Module.h - Library for defining a module and sending/receiving its id and value over I2C.
+/**
+ * AUTOHOME MODULE LIBRARY
+ * Arduino Library to control the LED Module device.
+ *
+ * July 2013.
  */
 
 #ifndef Module_h
 #define Module_h
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 class Module
 {
-	public:
-		Module(char* id, int value);
-		void setValue(int value);
-		int getValue();
-		int parseValue(char string[]);
-		char* getID();
-		void slaveSendData();
-		char* getData(char buf[]);
-	private:
-		int _value;
-		char * _id;
-};
-
-#endif
+  public:
+  	void actOn(uint8_t []);
+  	bool statusRequested();
+  	uint8_t* getStatus();
+  private:
+  	uint8_t setBrightness(uint8_t);
+}
