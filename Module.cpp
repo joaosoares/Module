@@ -19,22 +19,23 @@ Module::Module()
 // Parses the body of the packet and evaluates commands
 void Module::actOn(uint8_t data[])
 {
-  while (i < sizeof(data[]))
+  uint16_t i = 0;
+  while (i < sizeof(data))
   {
     switch(data[i])
     {
       // Set brightness of LED by changing value of variable
       case(CMD_SET_BRIGHTNESS):
         brightness = data[i++];
-        break
+        break;
       // Turn LED off
       case(CMD_LED_OFF):
         brightness = 0;
-        break
+        break;
       // Request status update by updating global status 
       case(CMD_STATUS_REQ):
         status |= (1<<FLAG_STATUS_REQ);
-        break
+        break;
       // CONTINUE WITH LIST OF POSSIBLE COMMANDS AND ACTIONS!!!
     }
 
@@ -51,19 +52,19 @@ bool Module::statusRequested()
   {
     // Clear flag and return true
     status &= ~(1<<FLAG_STATUS_REQ);
-    return true
+    return true;
   }
 
   // If status was not requested 
-  return false
+  return false;
 }
 
-uint8_t* Module::getStatus()
+void Module::getStatus(uint8_t array[])
 {
   
 }
 
-uint8_t setBrightness(uint8_t value)
+uint8_t Module::setBrightness(uint8_t value)
 {
   analogWrite(PIN_LED,brightness);
 }

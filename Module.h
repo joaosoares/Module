@@ -16,17 +16,22 @@
 /* Defines used for shifting into status flag byte */
 #define FLAG_STATUS_REQ 0
 
+// LED PIN DECLARATION
+#define PIN_LED 9
+
 #include <Arduino.h>
 
 class Module
 {
   public:
+  	Module();
   	void actOn(uint8_t []);
   	bool statusRequested();
-  	uint8_t* getStatus();
+  	void getStatus(uint8_t []);
   private:
   	uint8_t setBrightness(uint8_t);
   	uint8_t brightness;
   	uint8_t status;
-}
+};
 
+#endif
