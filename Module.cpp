@@ -60,10 +60,10 @@ bool Module::statusRequested()
 
 uint8_t* Module::getStatus()
 {
-
+  
 }
 
 uint8_t setBrightness(uint8_t value)
 {
-
+  analogWrite(PIN_LED,brightness);
 }
