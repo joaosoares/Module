@@ -49,9 +49,11 @@ bool Module::statusRequested()
   // Requires masking of status to eliminate other bits
   if (status & (1<<FLAG_STATUS_REQ))
   {
+    // Clear flag and return true
+    status &= ~(1<<FLAG_STATUS_REQ);
     return true
   }
-  
+
   // If status was not requested 
   return false
 }
